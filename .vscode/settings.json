@@ -1,0 +1,6 @@
+{
+    "svn.ignoreMissingSvnWarning": true,
+    "files.associations": {
+        "Jogo.C": "cpp"
+    }
+}
