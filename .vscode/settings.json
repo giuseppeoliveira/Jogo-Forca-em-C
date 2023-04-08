@@ -1,6 +1,8 @@
 {
     "svn.ignoreMissingSvnWarning": true,
     "files.associations": {
-        "Jogo.C": "cpp"
-    }
+        "Jogo.C": "cpp",
+        "Exercicio_1.C": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
