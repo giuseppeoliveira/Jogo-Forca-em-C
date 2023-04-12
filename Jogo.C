@@ -7,19 +7,14 @@ void abertura() {
     printf("/****************/\n\n");
 }
 
-void chuta() {
+void chuta(char chutes [26], int tentativas) {
     char chute;
-    printf("Qual letra? ");
     scanf(" %c", &chute);
 
     chutes[tentativas] = chute;
-    tentativas++;
 }
 
 int main() {
-
-    abertura();
-
     char palavrasecreta[20];
 
     sprintf(palavrasecreta, "MELANCIA");
@@ -50,8 +45,9 @@ int main() {
             }
         }  
         printf("\n");
-              
-        chuta();
+        chuta(chutes, tentativas);
+        tentativas++;
+
     } while (!acertou && !enforcou);
 
 }
