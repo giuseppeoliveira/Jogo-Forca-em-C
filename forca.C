@@ -4,6 +4,8 @@
 #include <time.h>
 #include "forca.h"
 
+#define WORD_MAX_LENGH 10
+
 char palavrasecreta[20];
 char chutes[26];
 int chutesdados = 0;
@@ -87,7 +89,7 @@ void desenhaforca() {
 void escolhepalavra() {
     FILE* f;
 
-    f = fopen("./palavras.txt", "r");
+    f = fopen("palavras.txt", "r");
     if(f == 0) {
         printf("Banco de dados de palavras nao disponivel\n\n");
         exit(1);
@@ -106,6 +108,51 @@ void escolhepalavra() {
     fclose(f);
 }
 
+void printAllWords() {
+   FILE *fptr;
+   char** words;
+
+    if ((fptr = fopen("palavras.txt","r")) == NULL){
+       printf("Error! opening file");
+
+       exit(1);
+   }
+
+   int qtd;
+   fscanf(fptr, "%d", &qtd);
+
+   words = (char**) malloc(qtd * sizeof(char*));
+
+   for (int i = 0; i < qtd; i++) {
+    words[i] = (char*) malloc(WORD_MAX_LENGH * sizeof(char));
+    fscanf(fptr, "%s", words[i]);
+    printf("%s\n", words[i]);
+   }
+
+   fclose(fptr);
+}
+
+void stuartPrintAll() {
+    FILE *fptr;
+
+    if ((fptr = fopen("palavras.txt","r")) == NULL){
+       printf("Error! opening file");
+
+       exit(1);
+   }
+
+   int word_count;
+   fscanf(fptr, "%d", &word_count);
+   
+   const int word_memory_size = sizeof(char) * WORD_MAX_LENGH;
+
+   char *stringArray = (char*) malloc(word_count * word_memory_size);
+   
+   for(int i = 0; i < word_count; i++) {
+    fscanf(fptr, "%s", stringArray + i * word_memory_size);
+    printf("%s\n", stringArray + i * word_memory_size);
+   }
+}
 
 void adicionapalavra() {
     char quer;
@@ -142,7 +189,17 @@ void adicionapalavra() {
 
 }
 
+// g++ forca.c forca.h -o forca.exe -lm
+// ./forca.exe
+
 int main() {
+    //printAllWords();
+    stuartPrintAll();
+
+    return 0;
+}
+
+/*int main() {
 
     abertura();
     escolhepalavra();
@@ -155,4 +212,4 @@ int main() {
     } while (!ganhou() && !enforcou());
 
     adicionapalavra();
-}
+}*/
