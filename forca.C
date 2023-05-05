@@ -19,7 +19,7 @@ int enforcou() {
         int existe = 0;
 
         for(int j = 0; j < strlen(palavrasecreta); j++) {
-            if(chutes[i] == palavrasecreta[j]) {
+            if(chutes[j] == palavrasecreta[j]) {
                 existe = 1;
                 break;
             }
