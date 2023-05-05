@@ -1,0 +1,4 @@
+// g++ forca.c forca.h -o forca.exe -lm
+// ./forca.exe
+
+Compile with terminal on Windows.
